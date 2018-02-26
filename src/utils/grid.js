@@ -35,16 +35,16 @@ export function createGrid(fullWidth, fullHeight, gridOptions) {
     grid[i] = [];
     for (let k = 0; k < height; k++) {
       const render = // floorRandom(4) === 0 &&
-        Math.floor(Math.pow(width, Math.random())) < 10 &&
-        Math.floor(Math.pow(width, Math.random())) < 10 &&
-        Math.floor(Math.pow(Math.abs((height / 2) - k), Math.random())) < 6 &&
-        Math.floor(Math.pow(Math.abs((height / 2) - k), Math.random())) < 40;
+        Math.floor(Math.pow(width, Math.random())) < 14 &&
+        Math.floor(Math.pow(width, Math.random())) < 14 &&
+        Math.floor(Math.pow(Math.abs((height / 2) - k), Math.random())) < 20 &&
+        Math.floor(Math.pow(Math.abs((height / 2) - k), Math.random())) < 30;
 
       // const inDiamond = Math.abs((width / 2) - i) + Math.abs((height / 2) - k) < Math.min(width, height) / 2;
       // const inCircle = Math.abs((width / 2) - i) + Math.abs((height / 2) - k) < Math.min(width, height) / 2
       const distanceFromCenter = Math.sqrt(((i - centerX) * (i - centerX)) + ((k - centerY) * (k - centerY)));
 
-      if (render && (distanceFromCenter < minDistToCenter || floorRandom(distanceFromCenter - minDistToCenter) === 0)) {
+      if (render && (distanceFromCenter < minDistToCenter || floorRandom(distanceFromCenter - minDistToCenter) < 3)) {
         const color = colorFunction();
 
         color.l -= floorRandom((i / width) * 100);
@@ -52,7 +52,7 @@ export function createGrid(fullWidth, fullHeight, gridOptions) {
         grid[i][k] = {
           ...options.defaultValue,
           color: createColorString(color),
-          size: floorRandom(10) === 0 ? Math.random() * Math.pow(2, Math.random()) : Math.random() * 0.25,
+          size: floorRandom(10) === 0 ? Math.random() * Math.random() : Math.random() * 0.25,
           x: width - i,
           y: height - k,
           render

@@ -55,6 +55,7 @@ export function createColorString(c) {
 }
 
 export const randomColorFunctions = [
+  getWhiteColor,
   createRandomColor,
   createRandomBlueColor,
   blueOrWhiteRandomColor
