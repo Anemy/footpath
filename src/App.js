@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import { createGrid } from './utils/grid';
+
+import Grid from './components/Grid';
 
 class App extends Component {
   componentWillMount() {
@@ -15,24 +18,34 @@ class App extends Component {
   }
 
   updateDimensions() {
+    let width = window.innerWidth
+      || document.documentElement.clientWidth
+      || document.body.clientWidth;
+
+    let height = window.innerHeight
+      || document.documentElement.clientHeight
+      || document.body.clientHeight;
+
     this.setState({
-      width: window.innerWidth
-        || document.documentElement.clientWidth
-        || document.body.clientWidth,
-      height: window.innerHeight
-        || document.documentElement.clientHeight
-        || document.body.clientHeight
+      grid: createGrid(width, height),
+      width,
+      height
     });
   }
 
   render() {
     const {
-      width, height
+      grid, width, height
     } = this.state;
 
     return (
       <div className="App">
-        <h2>{width} x {height}</h2>
+        {/* <h2>{width} x {height}</h2> */}
+        <Grid
+          grid={grid}
+          height={height}
+          width={width}
+        />
       </div>
     );
   }
