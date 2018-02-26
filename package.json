@@ -1,5 +1,6 @@
 {
-  "name": "Some dots",
+  "name": "path",
+  "homepage": "http://anemy.github.io/footpath",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
